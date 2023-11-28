@@ -14,8 +14,6 @@ create table laptopi(
 sifra int not null primary key identity(1,1),
 naziv varchar (50) not null,
 proizvodac int not null,
-kupac int,
-racun int,
 cijena decimal (18,2) not null
 
 );
@@ -35,15 +33,16 @@ email varchar (50) not null
 
 create table racuni (
 sifra int not null primary key identity (1,1),
-kupac varchar (50) not null,
+kupac int ,
+laptop int ,
 datum datetime not null, 
 brojracuna varchar (50) not null
 );
 
-
+alter table racuni add foreign key (kupac) references kupci(sifra);
 alter table laptopi add foreign key (proizvodac) references proizvodaci(sifra);
-alter table laptopi add foreign key (racun) references racuni(sifra);
-alter table laptopi add foreign key (kupac) references kupci(sifra);
+alter table racuni add foreign key (laptop) references laptopi(sifra);
+
 
 insert into proizvodaci (naziv) values
 ('Acer'),
@@ -61,18 +60,19 @@ insert into kupci (ime,prezime,email) values
 
 select * from kupci;
 
-insert into racuni (kupac,datum,brojracuna) values
-('Tomislav Županić','2021-05-15 12:55:00','854-25-76'),
-('Ivan Đanić','2019-07-10 18:45:20','854-25-76'),
-('Josip Sanader','2022-11-25  11:31:54','854-25-76')
-;
-
-select * from racuni;
-
 insert into laptopi (naziv,proizvodac,cijena) values
 ('Predator Helios 300',1,'2000'),
 ('Rog Strix g15',2,'1670'),
 ('Alienware',3,'2800')
 ;
 select * from laptopi;
+
+
+insert into racuni ( datum, brojracuna) values
+('2021-05-15 12:55:00','854-25-76'),
+('2019-07-10 18:45:20','854-25-76'),
+('2022-11-25  11:31:54','854-25-76')
+;
+
+select * from racuni;
 
