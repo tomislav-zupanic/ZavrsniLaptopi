@@ -61,9 +61,9 @@ insert into kupci (ime,prezime,email) values
 select * from kupci;
 
 insert into laptopi (naziv,proizvodac,cijena) values
-('Predator Helios 300',1,'2000'),
-('Rog Strix g15',2,'1670'),
-('Alienware',3,'2800')
+('Predator Helios 300',1,2000),
+('Rog Strix g15',2,1670),
+('Alienware',3,2800)
 ;
 select * from laptopi;
 
@@ -71,7 +71,7 @@ select * from laptopi;
 insert into racuni ( datum, brojracuna) values
 ('2021-05-15 12:55:00','854-25-76'),
 ('2019-07-10 18:45:20','854-25-76'),
-('2022-11-25  11:31:54','854-25-76')
+('2022-11-25 11:31:54','854-25-76')
 ;
 
 select * from racuni;
